@@ -13,13 +13,12 @@ class WalletForm extends Component {
     method: 'Dinheiro',
     tag: 'Alimentação',
     description: '',
-    exchangeRates: '',
   };
 
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(fetchApiCurrencyThunk());
-    this.fetchAllData();
+    // this.fetchAllData();
   }
 
   handleChange = ({ target }) => {
@@ -38,23 +37,24 @@ class WalletForm extends Component {
     });
   };
 
-  fetchAllData = async () => {
-    const response = await fetch('https://economia.awesomeapi.com.br/json/all');
-    const data = await response.json();
-    this.setState({
-      exchangeRates: data,
-    });
-  };
+  // fetchAllData = async () => {
+  //   const response = await fetch('https://economia.awesomeapi.com.br/json/all');
+  //   const data = await response.json();
+  //   this.setState({
+  //     exchangeRates: data,
+  //   });
+  // };
 
   handleClick = (expenseData) => {
     const { dispatch } = this.props;
     dispatch(submitExpenses(expenseData));
-    // dispatch(fetchApiCurrencyThunk());
+    dispatch(fetchApiCurrencyThunk());
     // this.fetchAllData();
   };
 
   render() {
-    const { currencies } = this.props;
+    const { allData, currencies } = this.props;
+    console.log(this.props);
     const {
       id,
       value,
@@ -62,7 +62,6 @@ class WalletForm extends Component {
       method,
       tag,
       description,
-      exchangeRates,
     } = this.state;
 
     const expenseData = {
@@ -72,7 +71,7 @@ class WalletForm extends Component {
       method,
       tag,
       description,
-      exchangeRates,
+      exchangeRates: allData,
     };
 
     return (
@@ -158,9 +157,11 @@ class WalletForm extends Component {
 
 const mapStateToProps = (state) => ({
   currencies: state.wallet.currencies,
+  allData: state.wallet.allData,
 });
 
 WalletForm.propTypes = {
+  allData: PropTypes.shape({}).isRequired,
   currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
   dispatch: PropTypes.func.isRequired,
 };

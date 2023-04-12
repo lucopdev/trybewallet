@@ -6,6 +6,7 @@ const INITIAL_STATE = {
   expenses: [],
   editor: false,
   idToEdit: 0,
+  allData: {},
 };
 
 const wallet = (state = INITIAL_STATE, action) => {
@@ -13,6 +14,7 @@ const wallet = (state = INITIAL_STATE, action) => {
   case REQUEST_SUCCESS:
     return {
       ...state,
+      allData: action.payload,
       currencies: Object.keys(action.payload).filter((data) => data !== 'USDT'),
     };
   case SUBMIT_EXPENSES:
