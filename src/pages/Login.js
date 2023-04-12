@@ -16,13 +16,14 @@ class Login extends React.Component {
   handleErrors = () => {
     const { email, password } = this.state;
     const minLength = 6;
-
+    const passwordLength = password.length >= minLength;
     const errorsList = [
-      password.length >= minLength,
-      this.validEmail(email),
+      !passwordLength,
+      !email.length,
+      !this.validEmail(email),
     ];
-    const noErrors = errorsList.some((error) => error === false);
-    this.setState({ isValid: !noErrors });
+    const noErrors = errorsList.every((error) => error === false);
+    this.setState({ isValid: noErrors });
   };
 
   handleChange = ({ target }) => {
@@ -48,7 +49,6 @@ class Login extends React.Component {
         <input
           value={ password }
           name="password"
-          minLength="6"
           data-testid="password-input"
           type="password"
           onChange={ (event) => this.handleChange(event) }

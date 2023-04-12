@@ -1,18 +1,23 @@
-import { USER_INFO, REQUEST_SUCCESS } from '../types/userTypes';
+import { USER_INFO } from '../types/userTypes';
+import { REQUEST_SUCCESS, SUBMIT_EXPENSES } from '../types/walletTypes';
 
 export const userSubmit = (email, password) => ({
   type: USER_INFO,
   payload: { email, password },
 });
 
-export const requestSuccess = (data) => ({
+export const requestSuccess = (currencyData) => ({
   type: REQUEST_SUCCESS,
-  payload: data,
+  payload: currencyData,
 });
 
-export const fetchApiThunk = () => async (dispatch) => {
+export const fetchApiCurrencyThunk = () => async (dispatch) => {
   const response = await fetch('https://economia.awesomeapi.com.br/json/all');
   const allData = await response.json();
-  const noUSDT = Object.keys(allData).filter((data) => data !== 'USDT');
-  dispatch(requestSuccess(noUSDT));
+  dispatch(requestSuccess(allData));
 };
+
+export const submitExpenses = (expenseObject) => ({
+  type: SUBMIT_EXPENSES,
+  payload: expenseObject,
+});

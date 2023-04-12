@@ -2,10 +2,8 @@
 import { USER_INFO } from '../types/userTypes';
 
 const INITIAL_STATE = {
-  user: {
-    email: '',
-    password: '',
-  },
+  email: '',
+  password: '',
 };
 
 const user = (state = INITIAL_STATE, action) => {
@@ -13,9 +11,7 @@ const user = (state = INITIAL_STATE, action) => {
   case USER_INFO:
     return {
       ...state,
-      user: {
-        ...action.payload,
-      },
+      ...action.payload,
     };
   default:
     return state;
