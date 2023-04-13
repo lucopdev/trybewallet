@@ -2,12 +2,14 @@
   align-items: center;
   display: flex;
   justify-content: flex-end;
-  width: 95%;
+  width: 100vw;
 }
 
 .user-currency {
   align-items: center;
+  color: white;
   display: flex;
   justify-content: space-between;
+  margin-right: 30px;
   width: 400px;
 }

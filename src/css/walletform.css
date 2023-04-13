@@ -1,13 +1,29 @@
 .walletform-body {
-  background-color: rgb(145, 187, 226);
+  background-color: rgb(62, 122, 87);
   height: 100px;
   width: 100%;
 }
 
 .walletform-form {
   align-items: center;
+  color: white;
   display: flex;
   height: 100px;
   justify-content: space-evenly;
   width: 100%;
+}
+
+.walletform-form input , .walletform-form select {
+  border-radius: 5px;
+  font-size: 18px;
+  height: 40px;
+  margin-left: 10px;
+  width: 150px;
+}
+
+.walletform-form button {
+  background-color: rgb(28, 155, 96);
+  border-radius: 5px;
+  color: white;
+  height: 45px;
 }

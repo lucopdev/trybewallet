@@ -1,15 +1,16 @@
 .table-header {
-  align-items: center;
-  display: flex;
+  background-color: rgb(10, 22, 0);
+  color: white;
   height: 50px;
-  justify-content: space-evenly;
-  width: 100%;
+  width: 100vw;
 }
 
-.table-td {
-  align-items: center;
-  display: flex;
-  height: 50px;
-  justify-content: space-evenly;
-  width: 100%;
+.table-tr1 , .table-tr2 {
+  width: 100vw;
+}
+
+.table-tr1 th , .table-tr2 td {
+  font-size: 12px;
+  text-align: center;
+  width: 100vw;
 }
