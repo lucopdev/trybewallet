@@ -1,5 +1,5 @@
 import { USER_INFO } from '../types/userTypes';
-import { REQUEST_SUCCESS, SUBMIT_EXPENSES } from '../types/walletTypes';
+import { DELETE_EXPENSE, REQUEST_SUCCESS, SUBMIT_EXPENSES } from '../types/walletTypes';
 
 export const userSubmit = (email, password) => ({
   type: USER_INFO,
@@ -20,4 +20,9 @@ export const fetchApiCurrencyThunk = () => async (dispatch) => {
 export const submitExpenses = (expenseObject) => ({
   type: SUBMIT_EXPENSES,
   payload: expenseObject,
+});
+
+export const deleteExpense = (id) => ({
+  type: DELETE_EXPENSE,
+  payload: id,
 });

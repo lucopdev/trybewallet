@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchApiCurrencyThunk, submitExpenses } from '../redux/actions';
 import '../css/walletform.css';
-import store from '../redux/store';
 
 class WalletForm extends Component {
   state = {
@@ -29,11 +28,11 @@ class WalletForm extends Component {
 
   generateId = (event) => {
     event.preventDefault();
-    this.setState({
-      id: store.getState().wallet.expenses.length,
+    this.setState((prevState) => ({
+      id: prevState.id + 1,
       value: '',
       description: '',
-    });
+    }));
   };
 
   handleClick = (expenseData) => {
