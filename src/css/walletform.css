@@ -3,3 +3,11 @@
   height: 100px;
   width: 100%;
 }
+
+.walletform-form {
+  align-items: center;
+  display: flex;
+  height: 100px;
+  justify-content: space-evenly;
+  width: 100%;
+}

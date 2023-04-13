@@ -18,7 +18,6 @@ class WalletForm extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(fetchApiCurrencyThunk());
-    // this.fetchAllData();
   }
 
   handleChange = ({ target }) => {
@@ -37,24 +36,15 @@ class WalletForm extends Component {
     });
   };
 
-  // fetchAllData = async () => {
-  //   const response = await fetch('https://economia.awesomeapi.com.br/json/all');
-  //   const data = await response.json();
-  //   this.setState({
-  //     exchangeRates: data,
-  //   });
-  // };
-
   handleClick = (expenseData) => {
     const { dispatch } = this.props;
     dispatch(submitExpenses(expenseData));
     dispatch(fetchApiCurrencyThunk());
-    // this.fetchAllData();
   };
 
   render() {
     const { allData, currencies } = this.props;
-    console.log(this.props);
+
     const {
       id,
       value,
@@ -76,7 +66,7 @@ class WalletForm extends Component {
 
     return (
       <div className="walletform-body">
-        <form onSubmit={ this.generateId }>
+        <form onSubmit={ this.generateId } className="walletform-form">
           <span>
             Valor:
             <input

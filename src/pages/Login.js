@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { userSubmit } from '../redux/actions';
+import '../css/login.css';
 
 class Login extends React.Component {
   state = {
@@ -38,29 +39,31 @@ class Login extends React.Component {
     const { dispatch } = this.props;
 
     return (
-      <div>
-        <input
-          value={ email }
-          name="email"
-          data-testid="email-input"
-          type="email"
-          onChange={ (event) => this.handleChange(event) }
-        />
-        <input
-          value={ password }
-          name="password"
-          data-testid="password-input"
-          type="password"
-          onChange={ (event) => this.handleChange(event) }
-        />
-        <Link to="/carteira">
-          <button
-            disabled={ !isValid }
-            onClick={ () => dispatch(userSubmit(email, password)) }
-          >
-            Entrar
-          </button>
-        </Link>
+      <div className="container">
+        <div className="login-body">
+          <input
+            value={ email }
+            name="email"
+            data-testid="email-input"
+            type="email"
+            onChange={ (event) => this.handleChange(event) }
+          />
+          <input
+            value={ password }
+            name="password"
+            data-testid="password-input"
+            type="password"
+            onChange={ (event) => this.handleChange(event) }
+          />
+          <Link to="/carteira">
+            <button
+              disabled={ !isValid }
+              onClick={ () => dispatch(userSubmit(email, password)) }
+            >
+              Entrar
+            </button>
+          </Link>
+        </div>
       </div>
     );
   }
