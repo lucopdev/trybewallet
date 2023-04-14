@@ -15,10 +15,10 @@
 
 .walletform-form input , .walletform-form select {
   border-radius: 5px;
-  font-size: 18px;
+  font-size: 17px;
   height: 40px;
   margin-left: 10px;
-  width: 150px;
+  width: 120px;
 }
 
 .walletform-form button {

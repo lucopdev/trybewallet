@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { userSubmit } from '../redux/actions';
+import logoWallet from '../img/logowallet.jpg';
 import '../css/login.css';
 
 class Login extends React.Component {
@@ -40,6 +41,10 @@ class Login extends React.Component {
 
     return (
       <div className="container">
+        <div className="logo-div">
+          <img className="logo-wallet" src={ logoWallet } alt="logo-wallet" />
+          <h1>Digital Wallet</h1>
+        </div>
         <div className="login-body">
           <input
             value={ email }

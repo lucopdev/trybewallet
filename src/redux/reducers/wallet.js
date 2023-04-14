@@ -7,7 +7,6 @@ import {
 } from '../types/walletTypes';
 
 const INITIAL_STATE = {
-
   currencies: [],
   expenses: [],
   editor: false,

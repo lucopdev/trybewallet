@@ -1,8 +1,10 @@
 .container {
   align-items: center;
   display: flex;
-  height: 100vh;
-  justify-content: center;
+  flex-direction: column;
+  height: 60vh;
+  justify-content: space-evenly;
+  margin-top: 100px;
   width: 100vw;
 }
 
@@ -15,5 +17,20 @@
   flex-direction: column;
   height: 250px;
   justify-content: space-evenly;
-  width: 350px;
+  width: 400px;
+}
+
+.logo-div {
+  align-items: center;
+  color: white;
+  display: flex;
+  justify-content: space-evenly;
+  text-shadow: 2px 2px 2px black;
+  width: 400px;
+}
+
+.logo-wallet {
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.507);
+  width: 120px;
 }
