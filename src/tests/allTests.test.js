@@ -9,7 +9,7 @@ import mockData from './helpers/mockData';
 
 const initialState = {
   wallet: {
-    currencies: [...Object.keys(mockData)],
+    currencies: [...Object.keys(mockData).filter((currency) => currency !== 'USDT')],
     expenses: [{
       id: 0,
       value: '',
@@ -77,6 +77,7 @@ describe('Testa a aplicação', () => {
 
   it('Testa o funcionamento do form na pagina wallet', () => {
     renderWithRouterAndRedux(<Wallet />, { initialState });
+
     const valueInput = screen.getByRole('spinbutton');
     const currency = screen.getByTestId('currency-input');
     const method = screen.getByTestId('method-input');
@@ -91,10 +92,11 @@ describe('Testa a aplicação', () => {
     userEvent.type(description, 'McDonalds');
     userEvent.click(addExpense);
 
+    const valueCell = screen.getByRole('cell', { name: /25\.00/i });
     expect(screen.getByRole('cell', { name: /mcdonalds/i })).toBeInTheDocument();
     expect(screen.getAllByRole('cell', { name: /alimentação/i })[1]).toBeInTheDocument();
     expect(screen.getAllByRole('cell', { name: /dinheiro/i })[0]).toBeInTheDocument();
-    expect(screen.getByRole('cell', { name: /25\.00/i })).toBeInTheDocument();
+    expect(valueCell).toBeInTheDocument();
     expect(screen.getAllByRole('cell', { name: /dólar americano\/real brasileiro/i })[0]).toBeInTheDocument();
     expect(screen.getAllByRole('cell', { name: /4\.75/i })[0]).toBeInTheDocument();
 
@@ -104,6 +106,7 @@ describe('Testa a aplicação', () => {
     const deleteBtn = screen.getAllByRole('button', {
       name: /excluir/i,
     });
+    const table = document.getElementsByClassName('table-tr2');
 
     userEvent.click(editBtn[0]);
     userEvent.type(valueInput, '34');
@@ -111,7 +114,21 @@ describe('Testa a aplicação', () => {
     userEvent.click(editExpenseBtn);
     expect(screen.getByRole('cell', { name: /34\.00/i })).toBeInTheDocument();
 
+    expect(table).toHaveLength(1);
     userEvent.click(deleteBtn[0]);
-    expect(description.value).toBe('');
+    expect(table).toHaveLength(0);
+  });
+
+  it('Testa se ao chamar a API o resultado é filtrado corretamente', () => {
+    const mockFetch = () => {
+      global.fetch = jest.fn().mockResolvedValue({
+        json: jest.fn().mockResolvedValue(mockData),
+      });
+    };
+
+    mockFetch();
+    const { store } = renderWithRouterAndRedux(<Wallet />);
+    const state = store.getState();
+    expect(state.wallet.currencies).not.toContain('USDT');
   });
 });

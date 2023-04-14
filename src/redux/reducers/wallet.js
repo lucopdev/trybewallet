@@ -46,7 +46,7 @@ const wallet = (state = INITIAL_STATE, action) => {
         ].sort((a, b) => a.id - b.id),
       };
     }
-    return;
+    break;
   case DELETE_EXPENSE:
     return {
       ...state,
