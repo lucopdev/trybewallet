@@ -1,15 +1,21 @@
 .header-header {
   align-items: center;
   display: flex;
+  height: 80px;
   justify-content: flex-end;
   width: 100vw;
 }
 
 .user-currency {
   align-items: center;
+  background-color: rgb(10, 22, 0);
+  border-radius: 15px;
   color: white;
   display: flex;
+  height: 45px;
   justify-content: space-between;
   margin-right: 30px;
+  padding-left: 40px;
+  padding-right: 40px;
   width: 400px;
 }

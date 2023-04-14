@@ -14,3 +14,7 @@
   text-align: center;
   width: 100vw;
 }
+
+.table-tr2 td {
+  background-color: white;
+}

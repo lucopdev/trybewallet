@@ -1,5 +1,7 @@
 body {
   background-color: rgb(60, 180, 140);
+  margin: 0 auto;
+  width: 100vw;
 }
 
 .main-app {
