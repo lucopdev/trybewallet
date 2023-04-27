@@ -40,18 +40,22 @@ class Table extends Component {
               </td>
               <td>Real</td>
               <td>
-                <button
-                  data-testid="edit-btn"
-                  onClick={ () => dispatch(editExpense(expense.id)) }
-                >
-                  Editar
-                </button>
-                <button
-                  data-testid="delete-btn"
-                  onClick={ () => dispatch(deleteExpense(expense.id)) }
-                >
-                  Excluir
-                </button>
+                <div className="buttons">
+                  <button
+                    className="button is-info"
+                    data-testid="edit-btn"
+                    onClick={ () => dispatch(editExpense(expense.id)) }
+                  >
+                    Editar
+                  </button>
+                  <button
+                    className="button is-danger"
+                    data-testid="delete-btn"
+                    onClick={ () => dispatch(deleteExpense(expense.id)) }
+                  >
+                    Excluir
+                  </button>
+                </div>
               </td>
             </tr>
           ))}

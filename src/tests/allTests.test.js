@@ -49,13 +49,17 @@ describe('Testa a aplicação', () => {
     expect(emailInput).toBeInTheDocument();
     expect(passwordInput).toBeInTheDocument();
 
-    userEvent.type(emailInput, 'teste@teste.com');
-    userEvent.type(passwordInput, '123456');
-    expect(submitButton).not.toBeDisabled();
-    userEvent.click(submitButton);
     act(() => {
+      userEvent.type(emailInput, 'teste@teste.com');
+      userEvent.type(passwordInput, '123456');
+    });
+    expect(submitButton).not.toBeDisabled();
+
+    act(() => {
+      userEvent.click(submitButton);
       history.push('/carteira');
     });
+
     const { pathname } = history.location;
     expect(pathname).toBe('/carteira');
     expect(screen.getByText(/minha carteira:/i)).toBeInTheDocument();
@@ -69,9 +73,10 @@ describe('Testa a aplicação', () => {
     const valueInput = screen.getByRole('spinbutton');
     const addExpense = screen.getByRole('button', { name: /adicionar despesa/i });
 
-    userEvent.type(valueInput, '25.40');
-    userEvent.click(addExpense);
-
+    act(() => {
+      userEvent.type(valueInput, '25.40');
+      userEvent.click(addExpense);
+    });
     expect(totalField.innerHTML).toBe('120.73');
   });
 
@@ -85,14 +90,21 @@ describe('Testa a aplicação', () => {
     const description = screen.getByRole('textbox');
     const addExpense = screen.getByRole('button', { name: /adicionar despesa/i });
 
-    userEvent.type(valueInput, '25');
+    act(() => {
+      userEvent.type(valueInput, '25');
+    });
+
     expect(currency.value).toBe('USD');
     expect(method.value).toBe('Dinheiro');
     expect(tag.value).toBe('Alimentação');
-    userEvent.type(description, 'McDonalds');
-    userEvent.click(addExpense);
+
+    act(() => {
+      userEvent.type(description, 'McDonalds');
+      userEvent.click(addExpense);
+    });
 
     const valueCell = screen.getByRole('cell', { name: /25\.00/i });
+
     expect(screen.getByRole('cell', { name: /mcdonalds/i })).toBeInTheDocument();
     expect(screen.getAllByRole('cell', { name: /alimentação/i })[1]).toBeInTheDocument();
     expect(screen.getAllByRole('cell', { name: /dinheiro/i })[0]).toBeInTheDocument();
@@ -108,14 +120,23 @@ describe('Testa a aplicação', () => {
     });
     const table = document.getElementsByClassName('table-tr2');
 
-    userEvent.click(editBtn[0]);
-    userEvent.type(valueInput, '34');
+    act(() => {
+      userEvent.click(editBtn[0]);
+      userEvent.type(valueInput, '34');
+    });
+
     const editExpenseBtn = screen.getByRole('button', { name: /editar despesa/i });
-    userEvent.click(editExpenseBtn);
+
+    act(() => {
+      userEvent.click(editExpenseBtn);
+    });
     expect(screen.getByRole('cell', { name: /34\.00/i })).toBeInTheDocument();
 
     expect(table).toHaveLength(1);
-    userEvent.click(deleteBtn[0]);
+
+    act(() => {
+      userEvent.click(deleteBtn[0]);
+    });
     expect(table).toHaveLength(0);
   });
 

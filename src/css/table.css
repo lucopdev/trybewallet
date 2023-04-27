@@ -1,20 +1,47 @@
 .table-header {
+  align-items: center;
   background-color: rgb(10, 22, 0);
-  color: white;
-  height: 50px;
+  display: flex;
   width: 100vw;
 }
 
 .table-tr1 , .table-tr2 {
+  display: flex;
+  height: 48px;
   width: 100vw;
 }
 
-.table-tr1 th , .table-tr2 td {
+.table-tr1 th {
+  margin-top: 15px;
+  align-items: center;
+  color: white;
+  display: flex;
   font-size: 12px;
-  text-align: center;
+  height: fit-content;
+  justify-content: space-evenly;
   width: 100vw;
 }
 
 .table-tr2 td {
+  margin-top: 5px;
+  align-items: center;
+  display: flex;
+  font-size: 12px;
+  height: fit-content;
+  justify-content: space-evenly;
+  text-align: center;
+  width: 100%;
+}
+
+.table-tr2 td {
+  align-items: center;
   background-color: white;
+  display: flex;
+  height: 45px;
+  width: 100%;
+}
+
+.is-danger, .is-info {
+  height: 25px;
+  width: 60px;
 }

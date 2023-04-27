@@ -25,9 +25,10 @@
   align-items: center;
   color: white;
   display: flex;
+  font-size: 20px;
   justify-content: space-between;
   text-shadow: 2px 2px 2px black;
-  width: 300px;
+  width: 210px;
 }
 
 .logo-wallet-header {

@@ -1,3 +1,9 @@
+body {
+  background-color: rgb(60, 180, 140);
+  height: 100vh;
+  width: 100vw;
+}
+
 .container {
   align-items: center;
   display: flex;
@@ -10,8 +16,9 @@
 
 .login-body {
   align-items: center;
-  background-color: rgb(60, 180, 140);
-  border: 2px solid white;
+  background-color: rgb(53, 126, 83);
+  border: 10px solid white;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.425);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -23,10 +30,11 @@
 .logo-div {
   align-items: center;
   color: white;
+  font-size: 25px;
   display: flex;
   justify-content: space-evenly;
   text-shadow: 2px 2px 2px black;
-  width: 400px;
+  width: 320px;
 }
 
 .logo-wallet {

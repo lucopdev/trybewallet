@@ -152,22 +152,25 @@ class WalletForm extends Component {
               onChange={ (event) => this.handleChange(event) }
             />
           </span>
+          <div className="buttons">
+            {editor ? (
+              <button
+                className="button is-success"
+                onClick={ () => this.handleClickEdit(expenseEdited) }
+              >
 
-          {editor ? (
-            <button
-              onClick={ () => this.handleClickEdit(expenseEdited) }
-            >
+                Editar despesa
+              </button>
+            ) : (
+              <button
+                className="button is-success"
+                onClick={ () => this.handleClickSubmit(expenseData) }
+              >
 
-              Editar despesa
-            </button>
-          ) : (
-            <button
-              onClick={ () => this.handleClickSubmit(expenseData) }
-            >
-
-              Adicionar Despesa
-            </button>
-          )}
+                Adicionar Despesa
+              </button>
+            )}
+          </div>
         </form>
       </div>
     );
